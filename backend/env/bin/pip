@@ -1,5 +1,5 @@
 #!/bin/sh
-'''exec' "/home/sistema/Documentos/Projetos Kaic/Vagas-app-fullstack/back/venv/bin/python3" "$0" "$@"
+'''exec' "/home/sistema/Documentos/Projetos Kaic/Vagas-app-fullstack/back/env/bin/python3" "$0" "$@"
 ' '''
 # -*- coding: utf-8 -*-
 import re
