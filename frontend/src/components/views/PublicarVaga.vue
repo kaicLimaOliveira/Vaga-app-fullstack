@@ -9,7 +9,7 @@
         <div class="field">
           <label class="label has-text-left">Titulo da Vaga</label>
           <div class="control">
-            <input class="input" type="text" v-model="title" required />
+            <input class="input" type="text" name="titleVacancy" v-model="title" required />
           </div>
           <p class="help has-text-left">
             Por exemplo: Programador, JavaScript ou Python
@@ -27,6 +27,7 @@
               class="textarea"
               v-model="description"
               maxlength="300"
+              name="descriptionVacancy"
             ></textarea>
           </div>
           <p class="help has-text-left">Informe os detalhes da vaga</p>
@@ -38,7 +39,7 @@
       <div class="column my-3">
         <div class="field">
           <label class="label has-text-left">Salário</label>
-          <input type="number" v-model="salary" class="input" />
+          <input type="number" v-model="salary" name="salaryVacancy" class="input" required />
           <p class="help has-text-left">Informe os detalhes da vaga</p>
         </div>
       </div>
@@ -48,8 +49,8 @@
           <div class="control">
             <div class="select">
               <label class="label has-text-left">Modalidade</label>
-              <select v-model="modality">
-                <option value="" disabled>--Selecione</option>
+              <select name="modalityVacancy" v-model="modality">
+                <option value=""  disabled>--Selecione</option>
                 <option value="1">Home Office</option>
                 <option value="2">Presencial</option>
               </select>
@@ -63,7 +64,7 @@
           <div class="control">
             <div class="select">
               <label class="label has-text-left">Tipo</label>
-              <select v-model="type">
+              <select name="typeVacancy" v-model="type">
                 <option value="" disabled>--Selecione</option>
                 <option value="1">CLT</option>
                 <option value="2">PJ</option>
@@ -73,13 +74,7 @@
         </div>
       </div>
     </div>
-    <div
-      class="
-        control
-        is-flex is-align-items-flex-start
-        align-button-center-is-size-touch
-      "
-    >
+    <div class="control is-flex is-align-items-flex-start align-button-center-is-size-touch">
       <button class="button is-primary" @click="registerNewVacancy()">
         Cadastrar
       </button>
@@ -116,11 +111,11 @@ export default {
       }
     },
     resetForm() {
-      (this.title = ""),
-        (this.description = ""),
-        (this.salary = ""),
-        (this.modality = ""),
-        (this.type = "");
+      this.title = "",
+      this.description = "",
+      this.salary = "",
+      this.modality = "",
+      this.type = "";
     },
     validateForm() {
       let validate = true;
