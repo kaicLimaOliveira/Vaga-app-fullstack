@@ -4,10 +4,10 @@ from controllers.PublishersController import Publishers
 
 pages = Blueprint('', __name__, url_prefix='/')
 
-@pages.route('Home', methods=['GET'])
+@pages.route('home', methods=['GET'])
 def index():
     return Publishers().index(request)
 
-@pages.route('Cadastro', methods=['POST'])
+@pages.route('cadastro')
 def register_vacancy():
     return Publishers().new_vacancy(request)
