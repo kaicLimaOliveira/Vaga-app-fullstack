@@ -29,7 +29,7 @@ end
 # unset irrelevant variables
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/sistema/Documentos/Projetos Kaic/Vagas-app-fullstack/back/venv"
+set -gx VIRTUAL_ENV "/home/sistema/Documentos/Projetos Kaic/Vagas-app-fullstack/backend/venv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH
