@@ -3,13 +3,18 @@ import Home from '@/components/views/Home.vue'
 import PublicarVaga from '@/components/views/PublicarVaga.vue'
 
 
-const router = createRouter({
+export const router = createRouter({
     history: createWebHistory(),
     routes: [
-        { path: '', name: 'Home', component: Home},
-        { path: '', name: 'Cadastro', component: PublicarVaga}
-    ],
-    strict: true
+        { 
+            path: '/Home',
+            name: 'Home', 
+            component: Home
+        },
+        { 
+            path: '/Cadastro', 
+            name: 'Cadastro', 
+            component: PublicarVaga
+        },
+    ]
 });
-
-export default router;

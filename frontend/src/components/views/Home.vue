@@ -1,12 +1,13 @@
 <template>
   <div class="container">
+    <VagasFavoritas />
     <PesquisarVaga />
 
     <ListaVagas />
 
     <div class="is-flex is-justify-content-space-around">
 
-      <div class="column is-3">
+      <div class="column is-4 heightIndicate">
         <Indicador 
           title="Vagas abertas" 
           :indicate="usersOnline" 
@@ -15,18 +16,18 @@
         />
       </div>
       
-      <div class="column is-3">
+      <div class="column is-4 heightIndicate">
         <Indicador 
-          title="Usuario online" 
+          title="Profissionais Cadastrados" 
           :indicate="usersOnline * 2" 
           bg="has-background-white" 
           color="has-text-black" 
         />
       </div>
 
-      <div class="column is-3">  
+      <div class="column is-4 heightIndicate">  
         <Indicador 
-          title="Vagas abertas" 
+          title="Visitantes Online" 
           :indicate="usersOnline * 3" 
           bg="has-background-black" 
           color="has-text-white" 
@@ -42,16 +43,19 @@
 import PesquisarVaga from "@/components/common/PesquisarVaga.vue"
 import ListaVagas from "@/components/common/ListaVagas.vue"
 import Indicador from "@/components/common/Indicador.vue"
+import VagasFavoritas from "@/components/common/VagasFavoritas.vue"
 
 export default {
   name: "Home",
   components: {
-    PesquisarVaga,
+    Indicador,
     ListaVagas,
-    Indicador
+    PesquisarVaga,
+    VagasFavoritas
   },
   data: () => ({
-    usersOnline: 0
+    usersOnline: 0,
+
   }),
   methods: {
     getUsersOnline() {
@@ -68,8 +72,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.spancing-columns {
-  display: flex;
-  justify-content: space-around;
+
+.heightIndicate{
+  height: 100px;
 }
+
 </style>

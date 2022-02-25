@@ -1,6 +1,8 @@
 <template>
-  <TopoPadrao @navigation="component = $event" />
-  <Conteudo v-if="visibility" :content="component" />
+  <div>
+    <TopoPadrao @navigation="component = $event" />
+    <Conteudo v-if="visibility" :content="component" />
+  </div>
 </template>
 
 <script>
@@ -27,5 +29,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  margin-bottom: 5rem;
 }
 </style>

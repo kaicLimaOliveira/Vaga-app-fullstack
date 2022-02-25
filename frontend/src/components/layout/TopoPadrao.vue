@@ -1,5 +1,6 @@
 <template>
   <nav
+    id="my-nav"
     class="navbar container is-fluid"
     role="navigation"
     aria-label="main navigation"
@@ -7,26 +8,26 @@
     <div class="navbar-brand font">
       <div class="navbar-item">Vagas</div>
 
-      <a
-        role="button"
-        class="navbar-burger"
-        aria-label="menu"
-        aria-expanded="false"
-        data-target="ToggleNav"
+      <a role="button" class="navbar-burger" 
+        aria-label="menu" :aria-expanded="isActive" 
+        data-target="navMenu"
+        @click="isActive = !isActive"
       >
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
       </a>
     </div>
-
-    <div id="ToggleNav" class="navbar-menu">
+ 
+    <div id="navMenu" class="navbar-menu">
       <div class="navbar-start">
-        <a class="navbar-item" @click="isContent('Home')">Home</a>
+        <RouterLink :to="{name:'Home'}" class="navbar-item" @click="isContent('Home')">
+          Home
+        </RouterLink>
 
-        <a class="navbar-item" @click="isContent('PublicarVaga')">
+        <RouterLink :to="{name:'Cadastro'}" class="navbar-item" @click="isContent('PublicarVaga')">
           Publicar Vaga
-        </a>
+        </RouterLink>
       </div>
     </div>
   </nav>
@@ -42,9 +43,16 @@ export default {
     Home,
     PublicarVaga,
   },
+  data: () => ({
+    isActive: false,
+    showNavbar: true
+  }),
   methods: {
     isContent(e) {
       this.$emit("navigation", e);
+    },
+    openResponsiveNav() {
+      
     },
   },
 };

@@ -28,6 +28,7 @@
               v-model="description"
               maxlength="300"
               name="descriptionVacancy"
+              required
             ></textarea>
           </div>
           <p class="help has-text-left">Informe os detalhes da vaga</p>
@@ -49,7 +50,7 @@
           <div class="control">
             <div class="select">
               <label class="label has-text-left">Modalidade</label>
-              <select name="modalityVacancy" v-model="modality">
+              <select name="modalityVacancy" v-model="modality" required>
                 <option value=""  disabled>--Selecione</option>
                 <option value="1">Home Office</option>
                 <option value="2">Presencial</option>
@@ -64,7 +65,7 @@
           <div class="control">
             <div class="select">
               <label class="label has-text-left">Tipo</label>
-              <select name="typeVacancy" v-model="type">
+              <select name="typeVacancy" v-model="type" required>
                 <option value="" disabled>--Selecione</option>
                 <option value="1">CLT</option>
                 <option value="2">PJ</option>
@@ -83,6 +84,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: "PublicarVaga",
   data: () => ({
@@ -90,24 +93,50 @@ export default {
     description: "",
     salary: "",
     modality: "",
-    type: "",
+    type: ""
   }),
 
   methods: {
     registerNewVacancy() {
       if (this.validateForm()) {
+      
+        this.axiosCreate()
         this.resetForm();
         this.$swal({
           icon: "success",
           title: "Registro com sucesso",
           text: `A vaga ${this.title} foi registrada com sucesso!`,
         });
+
       } else {
         this.$swal({
           icon: "error",
           title: "Ocorreu um erro...",
           text: `Por favor, preencha corretamente o formulário!`,
+          confirmButtonColor: '#0d0d0d',
+          cancelButtonColor: '#00c4a7'
         });
+      }
+    },
+    axiosCreate() {
+      try {
+        const path = 'http://localhost:4040/new_vacancy';
+        const sendRequest = async () => {
+          const response = await axios.post(path, {
+            title: this.title,
+            description: this.description,
+            salary:this.salary,
+            modality: this.modality,
+            type: this.type
+          }).catch(e => console.log(e.response))
+          
+          this.$router.push({path: '/Home'})
+          this.$router.go()
+        }
+  
+        sendRequest()
+      } catch(e) {
+        console.log(e);
       }
     },
     resetForm() {
@@ -128,6 +157,7 @@ export default {
 
       return validate;
     },
+
   },
 };
 </script>
