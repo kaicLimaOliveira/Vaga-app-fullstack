@@ -1,0 +1,10 @@
+{
+    "db_mongo": {
+        "dev": {
+            "url" : "mongodb://admin:Hc2020*@10.10.30.21:27017/",
+            "database" :"TreinoDev",
+            "user" :"admin",
+            "password" :"Hc2020*"
+        }
+    }
+}
