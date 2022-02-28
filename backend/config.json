@@ -1,8 +1,0 @@
-{
-    "db_mongo": {
-        "dev": {
-            "url": "mongodb://localhost:27017/",
-            "database": "FlaskMongoDB"
-        }
-    }
-}
