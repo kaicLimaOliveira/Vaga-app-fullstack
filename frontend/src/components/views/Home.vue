@@ -5,9 +5,9 @@
 
     <ListaVagas />
 
-    <div class="is-flex is-justify-content-space-around">
+    <div class="is-flex is-justify-content-space-around is-flex-wrap-wrap">
 
-      <div class="column is-4 heightIndicate">
+      <div class="column is-4 ">
         <Indicador 
           title="Vagas abertas" 
           :indicate="usersOnline" 
@@ -32,7 +32,7 @@
           bg="has-background-black" 
           color="has-text-white" 
         />
-      </div>'
+      </div>
   
     </div>
   </div>
@@ -70,11 +70,3 @@ export default {
 
 };
 </script>
-
-<style lang="scss" scoped>
-
-.heightIndicate{
-  height: 100px;
-}
-
-</style>

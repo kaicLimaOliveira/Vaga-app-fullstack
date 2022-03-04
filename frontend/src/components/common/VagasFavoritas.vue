@@ -43,12 +43,10 @@ export default {
   mounted() {
     this.emitter.on("favoriteVacancy", (e) => {
       this.favoriteVacancy.push(e);
-      console.log(this.favoriteVacancy);
     });
     this.emitter.on("desfavoriteVacancy", (e) => {
       let indexArray = this.favoriteVacancy.indexOf(e);
-      if (indexArray !== 1) this.favoriteVacancy.splice(indexArray, 1);
-      console.log(this.favoriteVacancy.indexOf(e));
+      if (indexArray !== -1) this.favoriteVacancy.splice(indexArray, 1);
     });
   },
 };

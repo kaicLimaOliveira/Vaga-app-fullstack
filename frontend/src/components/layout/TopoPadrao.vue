@@ -21,11 +21,11 @@
  
     <div id="navMenu" class="navbar-menu">
       <div class="navbar-start">
-        <RouterLink :to="{name:'Home'}" class="navbar-item" @click="isContent('Home')">
+        <RouterLink :to="{ name:'Home' }" class="navbar-item" >
           Home
         </RouterLink>
 
-        <RouterLink :to="{name:'Cadastro'}" class="navbar-item" @click="isContent('PublicarVaga')">
+        <RouterLink :to="{ name:'Cadastro' }" class="navbar-item" >
           Publicar Vaga
         </RouterLink>
       </div>
@@ -47,14 +47,6 @@ export default {
     isActive: false,
     showNavbar: true
   }),
-  methods: {
-    isContent(e) {
-      this.$emit("navigation", e);
-    },
-    openResponsiveNav() {
-      
-    },
-  },
 };
 </script>
 

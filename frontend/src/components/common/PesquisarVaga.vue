@@ -54,7 +54,7 @@ export default {
 .card-color {
     background-color: #ededed;
     border: 1.5px solid #d1d1d1;
-    padding: 60px 70px;
+    padding: 45px 60px;
 
     span {
         font-size: 30px;

@@ -5,15 +5,15 @@
         {{ title }}
       </p>
       <div class="field is-flex is-align-items-center">
-        <label class="label checkbox has-text-white">
+        <label class="checkbox has-text-white pr-2">
           <input
             type="checkbox"
             name="favoriteVacancy"
             class="favoriteVacancy"
             v-model="favorite"
           />
-          Favoritar
         </label>
+        Favoritar
       </div>
     </header>
     <div class="card-content p-5 has-text-left">
