@@ -36,6 +36,7 @@
 <script>
 import Home from "@/components/views/Home.vue";
 import PublicarVaga from "@/components/views/PublicarVaga.vue";
+import { toggleButton } from "../../assets/plugins/toggle.js"
 
 export default {
   name: "TopoPadrao",
@@ -47,6 +48,9 @@ export default {
     isActive: false,
     showNavbar: true
   }),
+  created() {
+    console.log(toggleButton);
+  }
 };
 </script>
 
