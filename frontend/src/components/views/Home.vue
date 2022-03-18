@@ -10,7 +10,7 @@
       <div class="column is-4 ">
         <Indicador 
           title="Vagas abertas" 
-          :indicate="usersOnline" 
+          :indicate="state.usersOnline" 
           bg="has-background-white" 
           color="has-text-black" 
         />
@@ -19,7 +19,7 @@
       <div class="column is-4 heightIndicate">
         <Indicador 
           title="Profissionais Cadastrados" 
-          :indicate="usersOnline * 2" 
+          :indicate="state.usersOnline * 2" 
           bg="has-background-white" 
           color="has-text-black" 
         />
@@ -28,7 +28,7 @@
       <div class="column is-4 heightIndicate">  
         <Indicador 
           title="Visitantes Online" 
-          :indicate="usersOnline * 3" 
+          :indicate="state.usersOnline * 3" 
           bg="has-background-black" 
           color="has-text-white" 
         />
@@ -39,34 +39,21 @@
 
 </template>
 
-<script>
+<script setup>
 import PesquisarVaga from "@/components/common/PesquisarVaga.vue"
 import ListaVagas from "@/components/common/ListaVagas.vue"
 import Indicador from "@/components/common/Indicador.vue"
 import VagasFavoritas from "@/components/common/VagasFavoritas.vue"
+import { reactive } from 'vue'
 
-export default {
-  name: "Home",
-  components: {
-    Indicador,
-    ListaVagas,
-    PesquisarVaga,
-    VagasFavoritas
-  },
-  data: () => ({
-    usersOnline: 0,
+const state = reactive({
+  usersOnline: 0,
+})
+ 
+function getUsersOnline() {
+  state.usersOnline = Math.floor(Math.random() * 101)
+}
 
-  }),
-  methods: {
-    getUsersOnline() {
-      this.usersOnline = Math.floor(Math.random() * 101)
-    }
-  },
+// setInterval(state.getUsersOnline, 2000);
 
-  created() {
-    setInterval(this.getUsersOnline, 2000);
-  },
-
-
-};
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div
     @click="activateAction"
-    :class="[isActive ? activateClass : '', normalClass]"
+    :class="[state.isActive ? state.activateClass : '', state.normalClass]"
   >
     <div class="dropdown-trigger">
       <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
@@ -13,7 +13,7 @@
         <ul class="list has-text-left">
           <li
             class="list-item"
-            v-for="(vacancy, index) in favoriteVacancy"
+            v-for="(vacancy, index) in state.favoriteVacancy"
             :key="index"
           >
             {{ index + 1 }} - {{ vacancy }}
@@ -24,32 +24,32 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "VagasFavoritas",
-  data() {
-    return {
-      normalClass: "dropdown mt-4 is-flex",
-      activateClass: "is-active dropdown mt-4 is-flex",
-      isActive: false,
-      favoriteVacancy: [],
-    };
-  },
-  methods: {
-    activateAction() {
-      this.isActive = !this.isActive;
-    },
-  },
-  mounted() {
-    this.emitter.on("favoriteVacancy", (e) => {
-      this.favoriteVacancy.push(e);
-    });
-    this.emitter.on("desfavoriteVacancy", (e) => {
-      let indexArray = this.favoriteVacancy.indexOf(e);
-      if (indexArray !== -1) this.favoriteVacancy.splice(indexArray, 1);
-    });
-  },
-};
+<script setup>
+import mitt from 'mitt'
+import { reactive, onMounted } from 'vue'
+
+const emitter = mitt()
+const state = reactive({
+  normalClass: "dropdown mt-4 is-flex",
+  activateClass: "is-active dropdown mt-4 is-flex",
+  isActive: false,
+  favoriteVacancy: [],
+})
+
+function activateAction() {
+  state.isActive = !state.isActive;
+}
+
+onMounted(() => {
+  emitter.on("favoriteVacancy", (e) => {
+    state.favoriteVacancy.push(e);
+  });
+  emitter.on("desfavoriteVacancy", (e) => {
+    let indexArray = state.favoriteVacancy.indexOf(e);
+    if (indexArray !== -1) state.favoriteVacancy.splice(indexArray, 1);
+  });
+})
+
 </script>
 
 <style lang="scss" scoped>

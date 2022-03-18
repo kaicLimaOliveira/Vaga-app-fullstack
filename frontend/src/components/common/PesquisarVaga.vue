@@ -9,13 +9,13 @@
                     name="searchVacancy" 
                     class="input mt-3" 
                     placeholder="Pesquise por palavras chaves"
-                    v-model="title"
+                    v-model="state.title"
                 >
                 <p class="help">
                     Informe palavras que estejam relacionadas com a vaga que você procura
                 </p>
 
-                <button @click="filterVacancy()" class="button mt-4">
+                <button @click="filterVacancy" class="button mt-4">
                     <p>Buscar</p>
                     <img src="@/assets/images/magnifying-glass-solid.svg">
                 </button>
@@ -24,30 +24,28 @@
     </div>
 </template>
 
-<script>
-import axios from 'axios'
-export default {
-    name: "PesquisarVaga",
-    data: () => ({
-        title: "",
-        vacancys: []
-    }),
-    methods: {
-        filterVacancy() {
-            this.emitter.emit("filterVacancy", { title: this.title });
-        }
-    },
-    created() {
-        const path = 'http://localhost:4040/home'
-        const getRequest = async () => {
-            const response = await axios.get(path)
-            this.vacancys = await response.data
-        }
+<script setup>
+import { axiosCreate } from '../../services/axios'
+import mitt from 'mitt'
+import { reactive } from 'vue'
 
-        getRequest()
-    },
-
+const emitter = mitt()
+const state = reactive({
+    title: "",
+    vacancys: []
+})
+ 
+function filterVacancy() {
+    emitter.emit("filterVacancy", { title: state.title });
 }
+    
+const getRequest = async () => {
+    const response = await axiosCreate.get('home')
+    state.vacancys = await response.data
+}
+
+getRequest()
+    
 </script>
 
 <style lang="scss" scoped>

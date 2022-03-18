@@ -8,24 +8,27 @@
     <div class="navbar-brand font">
       <div class="navbar-item">Vagas</div>
 
-      <a role="button" class="navbar-burger" 
-        aria-label="menu" :aria-expanded="isActive" 
+      <a
+        role="button"
+        class="navbar-burger"
+        aria-label="menu"
+        aria-expanded="false"
         data-target="navMenu"
-        @click="isActive = !isActive"
+        @click="toggleButton"
       >
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
       </a>
     </div>
- 
+
     <div id="navMenu" class="navbar-menu">
       <div class="navbar-start">
-        <RouterLink :to="{ name:'Home' }" class="navbar-item" >
+        <RouterLink :to="{ name: 'Home' }" class="navbar-item">
           Home
         </RouterLink>
 
-        <RouterLink :to="{ name:'Cadastro' }" class="navbar-item" >
+        <RouterLink :to="{ name: 'Cadastro' }" class="navbar-item">
           Publicar Vaga
         </RouterLink>
       </div>
@@ -36,7 +39,7 @@
 <script>
 import Home from "@/components/views/Home.vue";
 import PublicarVaga from "@/components/views/PublicarVaga.vue";
-import { toggleButton } from "../../assets/plugins/toggle.js"
+import { toggleButton } from "../../plugins/toggle.js";
 
 export default {
   name: "TopoPadrao",
@@ -44,32 +47,29 @@ export default {
     Home,
     PublicarVaga,
   },
-  data: () => ({
-    isActive: false,
-    showNavbar: true
-  }),
-  created() {
-    console.log(toggleButton);
-  }
+  computed: {
+    toggleButton() {
+      toggleButton();
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 nav {
   background-color: #000;
-
+  .navbar-menu.is-active {
+    background-color: #000;
+  }
   .font {
     font-size: 20px;
-
     div {
       color: #ededed;
     }
   }
-
   a {
     color: #6b6b6b;
     font-weight: bolder;
-
     &:hover {
       color: #a3a3a3;
       background-color: #ededed;
