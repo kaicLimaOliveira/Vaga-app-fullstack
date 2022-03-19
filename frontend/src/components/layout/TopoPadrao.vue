@@ -36,45 +36,31 @@
   </nav>
 </template>
 
-<script>
+<script setup>
 import Home from "@/components/views/Home.vue";
 import PublicarVaga from "@/components/views/PublicarVaga.vue";
-import { toggleButton } from "../../assets/plugins/toggle.js";
+import { toggleButton } from "../../plugins/toggle.js";
 
-export default {
-  name: "TopoPadrao",
-  components: {
-    Home,
-    PublicarVaga,
-  },
-  computed: {
-    toggleButton() {
-      toggleButton();
-    },
-  },
-};
+function toggleButton() {
+  toggleButton();
+}
 </script>
 
 <style lang="scss" scoped>
 nav {
   background-color: #000;
-
   .navbar-menu.is-active {
     background-color: #000;
   }
-
   .font {
     font-size: 20px;
-
     div {
       color: #ededed;
     }
   }
-
   a {
     color: #6b6b6b;
     font-weight: bolder;
-
     &:hover {
       color: #a3a3a3;
       background-color: #ededed;

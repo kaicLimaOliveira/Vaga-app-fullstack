@@ -2,13 +2,6 @@
   <RouterView class="responsive" />
 </template>
 
-<script>
-
-export default {
-  name: "Conteudo",
-};
-</script>
-
 <style scoped>
 .responsive {
   padding: 20px;

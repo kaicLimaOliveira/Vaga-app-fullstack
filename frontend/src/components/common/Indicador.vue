@@ -2,29 +2,24 @@
     <div :class="style">
         <div class="card-content">
             <div class="content">
-                {{ title }}
+                {{ props.title }}
             </div>
             <p class="text">
-                {{ indicate }}
+                {{ props.indicate }}
             </p>
         </div>
     </div>
 </template>
 
-<script>
+<script setup>
+import { defineProps } from 'vue'
 
-export default {
-  name: "Indicador",
-  props: ["title", "indicate", "bg", "color"],
-  computed: {
-    style() {
-        return `card ${this.bg} ${this.color}`
-    },
-  }
+const props = defineProps({
+    style: ["title", "indicate", "bg", "color"]
+}) 
+
+function style() {
+    return `card ${props.bg} ${props.color}`
 }
-
+  
 </script>
-
-<style lang="scss" scoped>
-
-</style>
