@@ -14,7 +14,7 @@
         aria-label="menu"
         aria-expanded="false"
         data-target="navMenu"
-        @click="toggleButton"
+        @click="toggle"
       >
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
@@ -41,7 +41,7 @@ import Home from "@/components/views/Home.vue";
 import PublicarVaga from "@/components/views/PublicarVaga.vue";
 import { toggleButton } from "../../plugins/toggle.js";
 
-function toggleButton() {
+function toggle() {
   toggleButton();
 }
 </script>

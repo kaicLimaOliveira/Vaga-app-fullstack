@@ -1,5 +1,5 @@
 <template>
-  <section class="container mt-4 px-6">
+  <form class="container mt-4 px-6">
     <div class="has-text-left my-5 is-size-5 has-text-weight-bold">
       Apresente sua vaga para milhares de profissionais e de graça
     </div>
@@ -11,6 +11,7 @@
           <div class="control">
             <input
               class="input"
+              id="title"
               type="text"
               name="titleVacancy"
               v-model="state.title"
@@ -31,6 +32,7 @@
           <div class="control">
             <textarea
               class="textarea"
+              id="description"
               v-model="state.description"
               maxlength="300"
               name="descriptionVacancy"
@@ -48,6 +50,7 @@
           <label class="label has-text-left">Salário</label>
           <input
             type="number"
+            id="salary"
             v-model="state.salary"
             name="salaryVacancy"
             class="input"
@@ -62,7 +65,7 @@
           <div class="control">
             <div class="select">
               <label class="label has-text-left">Modalidade</label>
-              <select name="modalityVacancy" v-model="state.modality" required>
+              <select name="modalityVacancy" id="modality" v-model="state.modality" required>
                 <option value="" disabled>--Selecione</option>
                 <option value="1">Home Office</option>
                 <option value="2">Presencial</option>
@@ -77,7 +80,7 @@
           <div class="control">
             <div class="select">
               <label class="label has-text-left">Tipo</label>
-              <select name="typeVacancy" v-model="state.type" required>
+              <select name="typeVacancy" id="type" v-model="state.type" required>
                 <option value="" disabled>--Selecione</option>
                 <option value="1">CLT</option>
                 <option value="2">PJ</option>
@@ -94,11 +97,11 @@
         align-button-center-is-size-touch
       "
     >
-      <button class="button is-primary" @click="registerNewVacancy()">
+      <button class="button is-primary" @click.prevent="registerNewVacancy()">
         Cadastrar
       </button>
     </div>
-  </section>
+  </form>
 </template>
 
 <script setup>
