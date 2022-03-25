@@ -1,25 +1,14 @@
 <template>
   <div>
-    <TopoPadrao @navigation="component = $event" />
-    <Conteudo v-if="visibility" :content="component" />
+    <TopoPadrao  />
+    <Conteudo />
   </div>
 </template>
 
-<script>
+<script setup>
 import Conteudo from "@/components/layout/Conteudo.vue";
 import TopoPadrao from "@/components/layout/TopoPadrao.vue";
 
-export default {
-  name: "App",
-  components: {
-    TopoPadrao,
-    Conteudo,
-  },
-  data: () => ({
-    visibility: true,
-    component: "Home",
-  }),
-};
 </script>
 
 <style lang="scss">

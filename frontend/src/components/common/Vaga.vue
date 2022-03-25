@@ -23,7 +23,7 @@
     </div>
     <footer class="card-footer p-3">
       Salário: {{ props.salary }} | Modalidade: {{ getModality(modality) }} | Tipo:
-      {{ getType(type) }}
+      {{ getType(type) }} | Publicação: {{ datePublished }}
     </footer>
   </div>
 </template>
@@ -32,9 +32,10 @@
 import { reactive, watchEffect, defineProps } from 'vue'
 import mitt from 'mitt'
 
+const datePublished = new Date().toLocaleDateString("pt-BR")
 const emitter = mitt()
 const state = reactive({
-  favorite: false,
+  favorite: false
 })
 
 watchEffect((newValue) => {
@@ -68,7 +69,7 @@ const props = defineProps({
   },
 })
 
-function getModality(modality) {
+function getModality() {
   switch (props.modality) {
     case "1":
       return "Home office";
@@ -79,7 +80,7 @@ function getModality(modality) {
   return props.modality
 }
 
-function getType(type) {
+function getType() {
   switch (props.type) {
     case "1":
       return "CLT";
@@ -88,6 +89,10 @@ function getType(type) {
   }
 
   return props.type
+}
+
+function getDatePublished() {
+
 }
 
 </script>

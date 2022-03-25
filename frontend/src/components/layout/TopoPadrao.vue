@@ -39,6 +39,7 @@
 <script setup>
 import Home from "@/components/views/Home.vue";
 import PublicarVaga from "@/components/views/PublicarVaga.vue";
+
 import { toggleButton } from "../../plugins/toggle.js";
 
 function toggle() {

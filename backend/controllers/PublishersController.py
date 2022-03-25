@@ -23,7 +23,7 @@ class Publishers:
                 can_create = True
                 if not title:
                     can_create = False
-                if not description:
+                if not description or len(description) > 300:
                     can_create = False
                 if not salary:
                     can_create = False

@@ -10,11 +10,12 @@
           <label class="label has-text-left">Titulo da Vaga</label>
           <div class="control">
             <input
-              class="input"
+              class="input input-title"
               id="title"
               type="text"
               name="titleVacancy"
               v-model="state.title"
+              data-test="title"
               required
             />
           </div>
@@ -126,7 +127,7 @@ function registerNewVacancy() {
     sweetAlert({
       icon: "error",
       title: "Ocorreu um erro...",
-      text: `Por favor, preencha corretamente o formulário!`,
+      text: "Por favor, preencha corretamente o formulário!",
     });
   }
 }
@@ -167,6 +168,8 @@ function validateForm() {
   if (!state.salary) validate = false;
   if (!state.modality) validate = false;
   if (!state.type) validate = false;
+
+  if(state.description.length > 300) validate = false;
 
   return validate;
 }

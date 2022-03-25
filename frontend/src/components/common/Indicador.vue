@@ -16,10 +16,10 @@ import { defineProps } from 'vue'
 
 const props = defineProps({
     style: ["title", "indicate", "bg", "color"]
-}) 
+})
 
 function style() {
     return `card ${props.bg} ${props.color}`
 }
-  
+
 </script>
