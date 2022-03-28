@@ -1,6 +1,6 @@
 <template>
   <form class="container mt-4 px-6">
-    <div class="has-text-left my-5 is-size-5 has-text-weight-bold">
+    <div class="has-text-left my-5 is-size-5 has-text-weight-bold" data-test="title">
       Apresente sua vaga para milhares de profissionais e de graça
     </div>
 
@@ -10,7 +10,7 @@
           <label class="label has-text-left">Titulo da Vaga</label>
           <div class="control">
             <input
-              class="input input-title"
+              class="input"
               id="title"
               type="text"
               name="titleVacancy"
@@ -98,10 +98,16 @@
         align-button-center-is-size-touch
       "
     >
-      <button class="button is-primary" @click.prevent="registerNewVacancy()">
+      <button class="button is-primary" @click.prevent="registerNewVacancy" data-test="buttonNewVacancy">
         Cadastrar
       </button>
     </div>
+
+    <noscript>
+      <p data-test="vacancys">
+        {{ state.vacancys }}
+      </p>
+    </noscript>
   </form>
 </template>
 
@@ -116,20 +122,23 @@ const state = reactive({
   salary: "",
   modality: "",
   type: "",
+  vacancys: 0,
 });
 
 function registerNewVacancy() {
   if (validateForm()) {
     create();
     resetForm();
+    state.vacancys += 1
     sweetAlert({ icon: "success", title: "Vaga publicada com sucesso!" });
-  } else {
-    sweetAlert({
-      icon: "error",
-      title: "Ocorreu um erro...",
-      text: "Por favor, preencha corretamente o formulário!",
-    });
   }
+
+  sweetAlert({
+    icon: "error",
+    title: "Ocorreu um erro...",
+    text: "Por favor, preencha corretamente o formulário!",
+  });
+  
 }
 
 function create() {

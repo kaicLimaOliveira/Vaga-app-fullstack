@@ -1,6 +1,6 @@
 <template>
     <div class="columns is-flex is-justify-content-space-around is-flex-wrap-wrap">
-        <div class="column is-6" v-for="(vacancy, index) in state.vacancys" :key="index">
+        <div class="column is-6" v-for="(vacancy, index) in state.vacancys" :key="index" data-test="vacancy">
             <Vaga v-bind="vacancy" />
         </div>
     </div>
